@@ -8,20 +8,7 @@ class TodoComponent extends React.Component {
     constructor() {
         super();
         this.state = {
-            data: [
-                {
-                    title: 'Выучить React.js',
-                    status: false
-                },
-                {
-                    title: 'Прочитать книгу по ES6',
-                    status: true
-                },
-                {
-                    title: 'Просмотреть видео по WebPack',
-                    status: false
-                }
-            ],
+            data: [],
             current: ''
         }
     }
@@ -35,14 +22,35 @@ class TodoComponent extends React.Component {
     addTask = (event) => {
         event.preventDefault();
         const current = {
+            id: this.state.data.length !== 0 ? this.state.data[this.state.data.length - 1].id + 1 : 0,
             title: this.state.current,
             status: false
         };
+
+        const dublicated = this.state.data.some((element) => {
+            return element.title === current.title;
+        });
+
+        if (dublicated) {
+            return;
+        }
+
         this.setState({
             data: this.state.data.concat(current),
             current: ''
         });
-        //React.findDOMNode(this.refs.item).focus();
+    };
+
+    changeTask = (id) => {
+        this.setState({
+           data: this.state.data.map((element) => {
+               const item = element;
+               if(item.id === id) {
+                   item.status = !item.status;
+               }
+               return item;
+           })
+        });
     };
 
     render() {
@@ -50,7 +58,7 @@ class TodoComponent extends React.Component {
             const itemClass = item.status === true ? 'done' : null;
 
             return (
-                <li className={ itemClass }>{ item.title }</li>
+                <li key={ item.id } className={ itemClass } onClick={ this.changeTask.bind(null, item.id) }>{ item.title }</li>
             )
         });
 

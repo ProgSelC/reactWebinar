@@ -21,6 +21,7 @@
     color: #464444;
     padding: 12px 20px;
     transition: all 0.1s;
+    outline: none;
 }
 
 .add:hover {
@@ -37,6 +38,7 @@
     list-style-type: none;
     margin-bottom: 10px;
     cursor: pointer;
+    -webkit-user-select: none;
 }
 
 .tasks li.done {
