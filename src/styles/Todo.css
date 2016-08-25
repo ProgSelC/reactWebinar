@@ -1,0 +1,44 @@
+.todo-component {
+    width: 533px;
+    margin: 30px auto 0;
+}
+
+.val {
+    outline: none;
+    padding: 11px 6px 11px 10px;
+    border: 1px solid #eee;
+    border-right: none;
+    width: 400px;
+}
+
+.val::-webkit-input-placeholder {
+    font-style: italic;
+}
+
+.add {
+    background-color: #f1f1f1;
+    border: none;
+    color: #464444;
+    padding: 12px 20px;
+    transition: all 0.1s;
+}
+
+.add:hover {
+    background-color: #4381e8;
+    color: #fff;
+    cursor: pointer;
+}
+
+.tasks {
+    padding-left: 10px;
+}
+
+.tasks li {
+    list-style-type: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.tasks li.done {
+    text-decoration: line-through;
+}
